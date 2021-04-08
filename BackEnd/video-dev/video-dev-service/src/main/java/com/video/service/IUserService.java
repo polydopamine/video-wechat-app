@@ -36,5 +36,5 @@ public interface IUserService {
      * @param userId 用户id
      * @param file 用户头像
      */
-    void updateFace(String userId, MultipartFile file);
+    String updateFace(String userId, MultipartFile file);
 }

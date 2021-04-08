@@ -55,7 +55,7 @@ public class UserServiceImpl implements IUserService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void updateFace(String userId, MultipartFile file) {
+    public String updateFace(String userId, MultipartFile file) {
 
         String path = "face/" + userId + "/" + file.getOriginalFilename();
 
@@ -74,5 +74,7 @@ public class UserServiceImpl implements IUserService {
         updateUser.setFaceImage(path);
 
         usersMapper.updateById(updateUser);
+
+        return path;
     }
 }

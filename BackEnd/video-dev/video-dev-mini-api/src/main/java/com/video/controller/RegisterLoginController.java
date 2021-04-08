@@ -79,8 +79,8 @@ public class RegisterLoginController extends BaseController {
         if (StringUtils.isBlank(userId) || file == null) {
             return ResultBean.errorMsg("参数错误");
         }
-        userService.updateFace(userId, file);
-        return ResultBean.ok();
+        String path = userService.updateFace(userId, file);
+        return ResultBean.ok(path);
     }
 
     private UsersVo setUserRedisVo(Users user) {
