@@ -1,0 +1,8 @@
+com/video/controller/BgmController.class
+com/video/controller/VideosController.class
+com/video/controller/UsersReportController.class
+com/video/controller/UsersFansController.class
+com/video/controller/UsersController.class
+com/video/controller/CommentsController.class
+com/video/controller/SearchRecordsController.class
+com/video/controller/UsersLikeVideosController.class

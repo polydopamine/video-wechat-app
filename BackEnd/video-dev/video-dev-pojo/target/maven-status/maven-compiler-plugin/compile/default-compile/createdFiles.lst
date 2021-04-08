@@ -1,0 +1,8 @@
+com/video/entity/Users.class
+com/video/entity/Comments.class
+com/video/entity/Bgm.class
+com/video/entity/Videos.class
+com/video/entity/SearchRecords.class
+com/video/entity/UsersReport.class
+com/video/entity/UsersLikeVideos.class
+com/video/entity/UsersFans.class

@@ -1,0 +1,53 @@
+page {
+  /* 背景颜色不是纯白 */
+  background-color: whitesmoke;
+}
+
+/* 登录页面最上面的图片，全屏显示 */
+.login-img {
+  width: 750rpx;
+}
+
+/* 表单内容 */
+.inputView {
+  background-color: white;
+  line-height: 45px;
+}
+
+.nameImage, .keyImage {
+  width: 20px;
+  height: 20px;
+  margin-left: 22px;
+}
+
+.loginInLabel {
+  font-size: 15px;
+  color: gray;
+  margin: 15px 15px 15px 10px;
+}
+
+.inputText {
+  float: right;
+  text-align: right;
+  margin-right:22px;
+  margin-top: 11px;
+  font-size: 15px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: gainsboro;
+  margin-top: 1px;
+}
+
+/* button */
+.loginBtn {
+  width: 80%;
+  margin-top: 35px;
+}
+
+.goLoginBtn {
+  width: 80%;
+  margin-top: 15px;
+}

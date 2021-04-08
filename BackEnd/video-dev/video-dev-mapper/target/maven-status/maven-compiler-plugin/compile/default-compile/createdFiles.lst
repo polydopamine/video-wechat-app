@@ -1,0 +1,8 @@
+com/video/mapper/CommentsMapper.class
+com/video/mapper/UsersReportMapper.class
+com/video/mapper/UsersFansMapper.class
+com/video/mapper/VideosMapper.class
+com/video/mapper/BgmMapper.class
+com/video/mapper/UsersLikeVideosMapper.class
+com/video/mapper/SearchRecordsMapper.class
+com/video/mapper/UsersMapper.class
