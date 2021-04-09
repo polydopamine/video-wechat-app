@@ -3,7 +3,50 @@ Page({
   data: {
     "isMe": true,
     "faceUrl": "../resource/images/mine.png",
-    "nickname": "jack"
+    "nickname": "jack",
+    "fansCounts": 0,
+    "followCounts": 0,
+    "receiveLikeCounts": 0,
+  },
+  onLoad : function() {
+    // 页面渲染后执行
+    var me = this;
+    var user = app.getGlobalUserInfo();
+    var serverUrl = app.serverUrl;
+    var minioUrl = app.minioUrl;
+    wx.request({
+      url: serverUrl + "/user/queryUserInfo?userId=" + user.id,
+      method: "GET",
+      header: {
+        "content-type": "application/json" // default
+      },
+      success: function(res) {
+        if (res.data.status == 200) {
+          var userInfo = res.data.data;
+          var nickname = userInfo.nickname;
+          var fansCounts = userInfo.fansCounts;
+          var followCounts = userInfo.followCounts;
+          var receiveLikeCounts = userInfo.receiveLikeCounts;
+          var faceUrl = "../resource/images/mine.png";
+          if (userInfo.faceImage != null && userInfo.faceImage != '' && userInfo.faceImage != undefined) {
+            faceUrl = minioUrl + userInfo.faceImage;
+          }
+          me.setData({
+            "faceUrl": faceUrl,
+            "nickname": nickname,
+            "fansCounts": fansCounts,
+            "followCounts": followCounts,
+            "receiveLikeCounts": receiveLikeCounts,
+          });
+        } else if (res.data.status == 500) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: "none",
+            duration: 3000
+          });
+        }
+      }
+    });
   },
   changeFace : function() {
     var me = this;

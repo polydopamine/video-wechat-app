@@ -1,6 +1,6 @@
 // app.js
 App({
-  serverUrl: "http://192.168.0.101:8700",
+  serverUrl: "http://192.168.0.102:8700",
   minioUrl: "http://121.4.211.127:9000/video/",
   userInfo: null,
 
