@@ -83,6 +83,18 @@ public class RegisterLoginController extends BaseController {
         return ResultBean.ok(path);
     }
 
+    @GetMapping("queryUserInfo")
+    public ResultBean queryUserInfo(String userId) {
+        if (StringUtils.isBlank(userId)) {
+            return ResultBean.errorMsg("参数错误");
+        }
+        Users userInfo = userService.queryUserInfo(userId);
+        UsersVo usersVo = new UsersVo();
+        BeanUtils.copyProperties(userInfo, usersVo);
+        usersVo.setPassword(null);
+        return ResultBean.ok(usersVo);
+    }
+
     private UsersVo setUserRedisVo(Users user) {
         String userToken = UUID.randomUUID().toString();
         UsersVo usersVo = new UsersVo();

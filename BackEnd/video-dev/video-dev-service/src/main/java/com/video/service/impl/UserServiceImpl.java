@@ -56,9 +56,7 @@ public class UserServiceImpl implements IUserService {
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public String updateFace(String userId, MultipartFile file) {
-
         String path = "face/" + userId + "/" + file.getOriginalFilename();
-
         try {
             minioService.upload(path, file.getInputStream(), file.getContentType());
         } catch (MinioException e) {
@@ -68,13 +66,17 @@ public class UserServiceImpl implements IUserService {
             e.printStackTrace();
             log.error("图片解析异常, [{}]", "id = " + userId , e);
         }
-
         Users updateUser = new Users();
         updateUser.setId(userId);
         updateUser.setFaceImage(path);
-
         usersMapper.updateById(updateUser);
-
         return path;
+    }
+
+    @Transactional(propagation = Propagation.SUPPORTS)
+    @Override
+    public Users queryUserInfo(String userId) {
+        Users users = usersMapper.selectById(userId);
+        return users;
     }
 }

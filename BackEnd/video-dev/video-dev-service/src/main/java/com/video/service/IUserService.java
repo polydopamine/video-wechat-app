@@ -37,4 +37,11 @@ public interface IUserService {
      * @param file 用户头像
      */
     String updateFace(String userId, MultipartFile file);
+
+    /**
+     * 通过用户id查询其基本信息
+     * @param userId 用户id
+     * @return 用户信息
+     */
+    Users queryUserInfo(String userId);
 }
