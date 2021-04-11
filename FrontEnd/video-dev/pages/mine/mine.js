@@ -127,5 +127,42 @@ Page({
         }
       }
     });
+  },
+  uploadVideo: function() {
+    wx.chooseVideo({
+      sourceType: ['album'],
+      success: function (res) {
+        console.log(res);
+        var duration = res.duration;
+        var height = res.height;
+        var width = res.width;
+        var size = res.size;
+        var tempFilePath = res.tempFilePath;
+        var thumbTempFilePath = res.thumbTempFilePath;
+
+        if (duration > 10) {
+          wx.showToast({
+            title: "视频时间不能超过30秒！",
+            icon: "none",
+            duration: 3000
+          });
+        } else if (duration < 1) {
+          wx.showToast({
+            title: "视频时间不能短于1秒！",
+            icon: "none",
+            duration: 3000
+          });
+        } else {
+          wx.redirectTo({
+            url: "../chooseBgm/chooseBgm?duration=" + duration
+            + "&height=" + height
+            + "&width=" + width
+            + "&size=" + size
+            + "&tempFilePath=" + tempFilePath
+            + "&thumbTempFilePath=" + thumbTempFilePath
+          })
+        }
+      }
+    });
   }
 })
