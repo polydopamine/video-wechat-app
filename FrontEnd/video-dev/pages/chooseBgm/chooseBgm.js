@@ -1,14 +1,31 @@
 const app = getApp();
 Page({
   data: {
-    videoParams: {}
+    "minioUrl": "",
+    "videoParams": {},
+    "bgmList": []
   },
 
-  onload: function(params) {
+  onLoad: function(params) {
     var me = this;
+    // 获取上个页面带来的视频参数
     console.log(params);
     me.setData({
       videoParams: params
+    });
+    // 获取bgm列表
+    var serverUrl = app.serverUrl;
+    var minioUrl = app.minioUrl;
+    wx.request({
+      url: serverUrl + "/bgm/list",
+      method: "GET",
+      success: function(res) {
+        var bgmList = res.data.data;
+        me.setData({
+            "bgmList": bgmList,
+            "minioUrl": minioUrl
+        });
+      }
     });
 
   },

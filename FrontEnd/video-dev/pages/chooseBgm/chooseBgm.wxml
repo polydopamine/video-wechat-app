@@ -1,14 +1,18 @@
 <view>
   <form bindsubmit="upload">
 
-    <view class="container">
-      <audio src="https://music.163.com/song?id=1339375638&userid=109791739" controls loop></audio>
-      <radio></radio>
-    </view>
+    <radio-group>
+      <block wx:for="{{bgmList}}">
+        <view class="container">
+          <audio name="{{item.name}}" author="{{item.author}}" src="{{minioUrl}}{{item.path}}" id="{{item.id}}" controls loop></audio>
+          <radio value="{{item.id}}"></radio>
+        </view>
+      </block>
+    </radio-group>
 
     <view class="inputView">
       <label class="loginLabel">视频描述</label>
-      <input name="desc" type="text" class="inputText" placeHolder="说点什么吧"/>
+      <input name="desc" type="text" class="inputText" placeholder="说点什么吧"/>
     </view>
 
     <button class="submitBtn" type="primary" form-type="submit">上传视频</button>
