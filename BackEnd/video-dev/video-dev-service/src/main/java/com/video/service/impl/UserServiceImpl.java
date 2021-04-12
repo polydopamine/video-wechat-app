@@ -62,9 +62,11 @@ public class UserServiceImpl implements IUserService {
         } catch (MinioException e) {
             e.printStackTrace();
             log.error("图片上传异常, [{}]", "id = " + userId , e);
+            throw new RuntimeException("图片上传异常");
         } catch (IOException e) {
             e.printStackTrace();
             log.error("图片解析异常, [{}]", "id = " + userId , e);
+            throw new RuntimeException("图片解析异常");
         }
         Users updateUser = new Users();
         updateUser.setId(userId);
