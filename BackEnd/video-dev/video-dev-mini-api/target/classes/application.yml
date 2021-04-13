@@ -26,6 +26,11 @@ spring:
     timeout: 60s
     database: 0
 
+  # 最大文件大小
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
 minio:
   url: http://121.4.211.127:9000
   bucket: video
