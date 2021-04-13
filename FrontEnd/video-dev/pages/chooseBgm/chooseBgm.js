@@ -30,7 +30,7 @@ Page({
 
   },
 
-  upload: function() {
+  upload: function(e) {
     var me = this;
 
     var duration = me.data.videoParams.duration;
@@ -40,13 +40,49 @@ Page({
     var tempFilePath = me.data.videoParams.tempFilePath;
     var thumbTempFilePath = me.data.videoParams.thumbTempFilePath;
 
+    var userId = app.getGlobalUserInfo().id;
+    var audioId = e.detail.value.desc;
+    var videoDesc = e.detail.value.bgmId;
+    var serverUrl = app.serverUrl;
+
+    wx.showLoading({
+      title: "上传中..."
+    });
+
     wx.uploadFile({
-      filePath: filePath,
+      filePath: tempFilePath,
       name: 'file',
       url: serverUrl + "/video/upload",
+      formData: {
+        "userId": userId,
+        "audioId": audioId,
+        "videoDesc": videoDesc,
+        "videoSeconds": duration,
+        "videoWidth": width,
+        "videoHeight": height
+      },
       success: function(res) {
+        console.log(res);
+        wx.hideLoading();
+        var data = JSON.parse(res.data);
+        if (data.status == 200) {
+          wx.showToast({
+            title: "上传成功！",
+            icon: "none",
+            duration: 3000
+          });
+          wx.redirectTo({
+            url: '../mine/mine',
+          })
+        } else if (data.status == 500) {
+          wx.showToast({
+            title: res.data.msg,
+            icon: "none",
+            duration: 3000
+          });
+        }
       }
-    })
+    });
 
   }
 })

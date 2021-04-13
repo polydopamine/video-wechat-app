@@ -1,7 +1,7 @@
 <view>
   <form bindsubmit="upload">
 
-    <radio-group>
+    <radio-group name="bgmId">
       <block wx:for="{{bgmList}}">
         <view class="container">
           <audio name="{{item.name}}" author="{{item.author}}" src="{{minioUrl}}{{item.path}}" id="{{item.id}}" controls loop></audio>
