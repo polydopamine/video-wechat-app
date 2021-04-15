@@ -30,4 +30,12 @@ public class VideoController {
         return ResultBean.ok();
     }
 
+    public ResultBean uploadCover(String userId, String videoId, MultipartFile file) {
+        if (StringUtils.isBlank(userId) || StringUtils.isBlank(videoId)) {
+            return ResultBean.errorMsg("参数错误");
+        }
+        videoService.uploadCover(userId, videoId, file);
+        return ResultBean.ok();
+    }
+
 }

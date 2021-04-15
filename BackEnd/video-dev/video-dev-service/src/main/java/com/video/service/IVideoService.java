@@ -24,4 +24,12 @@ public interface IVideoService {
      */
     void uploadVideo(String userId, String audioId, String videoDesc, Float videoSeconds,
                      Integer videoWidth, Integer videoHeight, String coverPath, MultipartFile file);
+
+    /**
+     * 上传视频封面
+     * @param userId 用户id
+     * @param videoId 视频id
+     * @param file 封面文件
+     */
+    void uploadCover(String userId, String videoId, MultipartFile file);
 }
